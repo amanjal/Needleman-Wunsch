@@ -4,7 +4,7 @@ from BLOSUM import *
 # dictionary to store all information from cdr3 files
 # patient numbers keys, values is a list of list of
 # all other information
-info_dict = ()
+info_dict = {}
 
 # method to get all information from all cdr3 files
 # and store them in info_dict for later use
@@ -20,8 +20,12 @@ def path(folder):
 # Method to take infomration from cdr3 file and store
 # it as the value for the patient key in info_dict
 def read(file, patient):
-    Seq_list = [], Chain_type = [], Read_count = []
-    V_chains = [], D_chains = [], J_chains = []
+    Seq_list = []
+    Chain_type = []
+    Read_count = []
+    V_chains = []
+    D_chains = []
+    J_chains = []
     f = open(file)
     f.readline()
     lines = f.readlines()

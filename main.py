@@ -1,3 +1,4 @@
+import csv
 from read import *
 from NW import *
 # important COVID-19 sequences we are searching for
@@ -14,16 +15,26 @@ sequences = ['CQQYGSSPR', 'CSSYEGSNNFV', 'CQQLNSYPPY',
 
 def compare():
     keys = info_dict.keys()
-    table = np.zeros(len(keys), len(sequences))
+    table = np.zeros((len(keys), len(sequences)))
     for i in range(len(sequences)):
         seq = sequences[i]
-        for j in range(keys):
-            k = keys[j]
+        for j in range(len(keys)):
+            temp = list(keys)
+            k = temp[j]
             for chain in info_dict[k][0]:
-                table[j][i] = table[j][i] + nw(seq, chain, gap_penalty=4, finding_max=True, cutoff=0.70)
+                table[j][i] = table[j][i] + nw(seq, chain, gap_penalty=-4, finding_max=True, cutoff=0.70)
     return table
 
-        
+def makeCSV(results):
+    with open('results.csv', 'w') as f:
+        writer = csv.writer(f)
+        header = sequences.insert("", 0)
+        writer.writerow(header)
+        keys = list(info_dict.keys())
+        for i in range(len(results)):
+            input = results[i]
+            input.insert(keys[i], 0)
+            writer.writerow(input)
 
 
 def main():

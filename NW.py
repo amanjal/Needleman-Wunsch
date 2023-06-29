@@ -43,8 +43,8 @@ def nw(seq1, seq2, gap_penalty = -4, finding_max = False, cutoff = 0.5):
 
     # score matrix to keep track of alignment score
     # traceback matrix to use to display alignment
-    score = np.zeros(m+1, n+1)
-    traceback = np.zeros(m+1, n+1)
+    score = np.zeros((m+1, n+1))
+    traceback = np.zeros((m+1, n+1))
 
     # Assign values to first row/column w/ gap penalties
     for i in range(0, m+1):
@@ -68,12 +68,13 @@ def nw(seq1, seq2, gap_penalty = -4, finding_max = False, cutoff = 0.5):
         else:
             max_score = nw(seq2, seq2, gap_penalty)
     
-    # if our alignment is high enough
-    # return 1 indicating sequences are similar
-    if(score[i][j]/max_score >= cutoff):
-        return 1
-    else:
-        return 0
+        # if our alignment is high enough
+        # return 1 indicating sequences are similar
+        if(score[m][n]/max_score >= cutoff):
+            return 1
+        else:
+            return 0
+    return score[m][n]
 
 
     
