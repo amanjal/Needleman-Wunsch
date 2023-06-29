@@ -28,12 +28,12 @@ def compare():
 def makeCSV(results):
     with open('results.csv', 'w') as f:
         writer = csv.writer(f)
-        header = sequences.insert("", 0)
+        header = sequences.insert(0, "")
         writer.writerow(header)
         keys = list(info_dict.keys())
         for i in range(len(results)):
-            input = results[i]
-            input.insert(keys[i], 0)
+            input = list(results[i])
+            input.insert(0, keys[i])
             writer.writerow(input)
 
 
