@@ -11,6 +11,6 @@ NW.py
 Main.py
     Given a list of interested sequences, search all patients' chains and account for number of similar chains based on chosen cutoff. 
 
-Make sure to have cdr3 files in a seperate folder specifically called 'cdr3'. 
+Make sure to have cdr3 files in a seperate folder specifically called 'cdr'. 
 
 This can also be utilized for more traditional cases where only 2 sequences need to be compared. 
